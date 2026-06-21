@@ -14,37 +14,37 @@ export default async function AdminDashboard() {
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-      <p className="text-gray-500 mb-8">Přehled závodu</p>
+      <p className="text-gray-500 mb-8">Prehled zavodu</p>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <div className="bg-white rounded-xl shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Calendar className="text-emerald-600" />
-            <span className="text-gray-500 text-sm">Sézony</span>
+            <span className="text-gray-500 text-sm">Sezony</span>
           </div>
           <p className="text-3xl font-bold text-gray-900">{seasonCount}</p>
         </div>
         <div className="bg-white rounded-xl shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Users className="text-emerald-600" />
-            <span className="text-gray-500 text-sm">Závodníci</span>
+            <span className="text-gray-500 text-sm">Zavodnici</span>
           </div>
           <p className="text-3xl font-bold text-gray-900">{athleteCount}</p>
         </div>
         <div className="bg-white rounded-xl shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Clock className="text-emerald-600" />
-            <span className="text-gray-500 text-sm">Záznamy časů</span>
+            <span className="text-gray-500 text-sm">Zaznamy casu</span>
           </div>
           <p className="text-3xl font-bold text-gray-900">{recentRecords}</p>
         </div>
         <div className="bg-white rounded-xl shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Activity className="text-orange-600" />
-            <span className="text-gray-500 text-sm">Stav závodu</span>
+            <span className="text-gray-500 text-sm">Stav zavodu</span>
           </div>
           <p className={`text-lg font-bold ${activeSeason ? 'text-orange-600' : 'text-gray-400'}`}>
-            {activeSeason ? 'ZIVE' : 'Neaktivní'}
+            {activeSeason ? 'ZIVE' : 'Neaktivni'}
           </p>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default async function AdminDashboard() {
                   <span className="font-medium">{cat.name}</span>
                 </div>
                 <p className="text-2xl font-bold">{cat.entries.length}</p>
-                <p className="text-gray-500 text-sm">závodníků</p>
+                <p className="text-gray-500 text-sm">zavodnik</p>
               </div>
             ))}
           </div>

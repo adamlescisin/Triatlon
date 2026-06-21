@@ -12,13 +12,13 @@ export default async function TimeKeepersPage() {
     orderBy: { name: 'asc' },
   })
 
-  const roleLabel: Record<string, string> = { timekeeper: 'Časomiřič', announcer: 'Hlasatel', admin: 'Admin' }
+  const roleLabel: Record<string, string> = { timekeeper: 'Časoměřič', announcer: 'Hlasatel', admin: 'Admin' }
 
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Časomiřiči</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Časoměřiči</h1>
           <p className="text-gray-500 mt-1">Správa uživatelů měřicího systému</p>
         </div>
       </div>
@@ -27,7 +27,8 @@ export default async function TimeKeepersPage() {
         {users.length === 0 ? (
           <div className="p-12 text-center">
             <Timer size={48} className="mx-auto mb-3 text-gray-300" />
-            <p className="text-gray-400">Žádní časomiřiči</p>
+            <p className="text-gray-400">Žádní časoměřiči</p>
+            <p className="text-gray-400 text-sm mt-1">Přidejte uživatele přes seed nebo databázi</p>
           </div>
         ) : (
           <table className="w-full">

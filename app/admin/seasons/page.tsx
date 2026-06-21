@@ -14,8 +14,8 @@ export default async function SeasonsPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Sézony</h1>
-          <p className="text-gray-500 mt-1">Správa závodních sézon</p>
+          <h1 className="text-3xl font-bold text-gray-900">Sezony</h1>
+          <p className="text-gray-500 mt-1">Sprava zavodnich sezon</p>
         </div>
       </div>
 
@@ -23,9 +23,9 @@ export default async function SeasonsPage() {
         <table className="w-full">
           <thead className="bg-gray-50 border-b">
             <tr>
-              <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Název</th>
+              <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Nazev</th>
               <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Rok</th>
-              <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Místo</th>
+              <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Misto</th>
               <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Stav</th>
               <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Kategorie</th>
               <th className="px-6 py-3"></th>
@@ -43,7 +43,7 @@ export default async function SeasonsPage() {
                     season.status === 'closed' ? 'bg-gray-100 text-gray-600' :
                     'bg-emerald-100 text-emerald-700'
                   }`}>
-                    {season.status === 'live' ? 'Živě' : season.status === 'closed' ? 'Uzavřeno' : 'Příprava'}
+                    {season.status === 'live' ? 'Zive' : season.status === 'closed' ? 'Uzavreno' : 'Priprava'}
                   </span>
                 </td>
                 <td className="px-6 py-4 text-gray-600">{season.categories.length}</td>
@@ -59,7 +59,7 @@ export default async function SeasonsPage() {
         {seasons.length === 0 && (
           <div className="text-center py-12 text-gray-400">
             <Calendar size={48} className="mx-auto mb-3 opacity-30" />
-            <p>Žádné sézony</p>
+            <p>Zadne sezony</p>
           </div>
         )}
       </div>

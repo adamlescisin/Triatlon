@@ -39,7 +39,7 @@ export default async function ResultsAuditPage() {
                 <th className="text-left px-4 py-3 text-gray-500 font-medium">Závodník</th>
                 <th className="text-left px-4 py-3 text-gray-500 font-medium">Číslo</th>
                 <th className="text-left px-4 py-3 text-gray-500 font-medium">Checkpoint</th>
-                <th className="text-left px-4 py-3 text-gray-500 font-medium">Časomiřič</th>
+                <th className="text-left px-4 py-3 text-gray-500 font-medium">Časoměřič</th>
                 <th className="text-left px-4 py-3 text-gray-500 font-medium">Poznámka</th>
               </tr>
             </thead>

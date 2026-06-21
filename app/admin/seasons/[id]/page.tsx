@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Plus, Check, X } from 'lucide-react'
+import { ArrowLeft, Plus, Trash2, Edit2, Check, X } from 'lucide-react'
 
 const COLORS = ['#3b82f6','#ec4899','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f97316']
 
@@ -40,7 +40,7 @@ export default function SeasonDetailPage() {
   }
 
   if (loading) return <div className="p-8 text-gray-500">Načítání...</div>
-  if (!season) return <div className="p-8 text-red-500">Sézona nenalezena</div>
+  if (!season) return <div className="p-8 text-red-500">Sezóna nenalezena</div>
 
   const statusLabels: Record<string, string> = { preparing: 'Příprava', live: 'Živě', closed: 'Uzavřeno' }
   const statusColors: Record<string, string> = { preparing: 'bg-emerald-100 text-emerald-700', live: 'bg-orange-100 text-orange-700', closed: 'bg-gray-100 text-gray-600' }
@@ -144,6 +144,9 @@ export default function SeasonDetailPage() {
                 <p className="font-medium text-gray-900">{cat.name}</p>
                 <p className="text-xs text-gray-500">{cat.type === 'relay' ? 'Štafety' : 'Jednotlivci'} · {cat.entries?.length ?? 0} závodníků</p>
               </div>
+              <Link href={`/admin/seasons/${id}/categories/${cat.id}`} className="text-emerald-600 hover:text-emerald-800 text-sm font-medium">
+                Spravovat
+              </Link>
             </div>
           ))}
           {season.categories.length === 0 && <p className="text-gray-400 text-sm text-center py-4">Žádné kategorie</p>}

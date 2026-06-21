@@ -114,7 +114,7 @@ export default function AthletesPage() {
               <tr>
                 <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Jméno</th>
                 <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Věk</th>
-                <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Starty</th>
+                <th className="text-left px-6 py-3 text-gray-500 text-sm font-medium">Starts</th>
                 <th className="px-6 py-3"></th>
               </tr>
             </thead>
