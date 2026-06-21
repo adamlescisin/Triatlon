@@ -6,6 +6,17 @@ import { useSearchParams } from 'next/navigation'
 import { ArrowLeft, Wifi, WifiOff, RotateCcw, Check } from 'lucide-react'
 import Link from 'next/link'
 
+const STATUS_LABELS: Record<string, string> = {
+  waiting: 'Čeká',
+  swimming: 'Plave',
+  biking: 'Na kole',
+  running: 'Běží',
+  finished: 'V cíli',
+  dns: 'DNS',
+  dnf: 'DNF',
+  dsq: 'DSQ',
+}
+
 interface PendingRecord {
   id: string
   entryId: string
@@ -26,9 +37,10 @@ export default function TimingCheckpointPage() {
   const [online, setOnline] = useState(true)
   const [lastAction, setLastAction] = useState<{ entryId: string; time: string; name: string } | null>(null)
   const [undoTimer, setUndoTimer] = useState<NodeJS.Timeout | null>(null)
-  const progressInterval = useRef<Record<string, NodeJS.Timeout>>({})
+  const pressTimers = useRef<Record<string, NodeJS.Timeout>>({})
   const pressProgress = useRef<Record<string, number>>({})
   const [pressing, setPressing] = useState<Record<string, number>>({})
+  const progressInterval = useRef<Record<string, NodeJS.Timeout>>({})
 
   useEffect(() => {
     setOnline(navigator.onLine)
@@ -152,6 +164,10 @@ export default function TimingCheckpointPage() {
       clearInterval(progressInterval.current[entryId])
       delete progressInterval.current[entryId]
     }
+    if (pressTimers.current[entryId]) {
+      clearTimeout(pressTimers.current[entryId])
+      delete pressTimers.current[entryId]
+    }
     setPressing(prev => { const n = { ...prev }; delete n[entryId]; return n })
     pressProgress.current[entryId] = 0
   }
@@ -263,7 +279,7 @@ export default function TimingCheckpointPage() {
       </div>
 
       <div className="fixed bottom-4 left-4 right-4 bg-gray-800/80 text-white text-xs text-center rounded-lg py-2 px-4">
-        Podžte tlačítko 1 sekundu pro zápis času
+        Podržte tlačítko 1 sekundu pro zápis času
       </div>
     </div>
   )

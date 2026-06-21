@@ -15,7 +15,7 @@ function formatMs(ms: number | null): string {
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   waiting: { label: 'Čeká', color: 'bg-gray-100 text-gray-600' },
-  swimming: { label: '🏄 Plave', color: 'bg-blue-100 text-blue-700' },
+  swimming: { label: '🏊 Plave', color: 'bg-blue-100 text-blue-700' },
   biking: { label: '🚴 Na kole', color: 'bg-yellow-100 text-yellow-700' },
   running: { label: '🏃 Běží', color: 'bg-orange-100 text-orange-700' },
   finished: { label: '✓ V cíli', color: 'bg-emerald-100 text-emerald-700' },
@@ -125,7 +125,7 @@ export default function ResultsPage() {
                         <p className="text-gray-300 text-sm">—</p>
                       )}
                       {entry.computed?.swimTime && (
-                        <p className="text-xs text-gray-400">🏄 {formatMs(entry.computed.swimTime)}</p>
+                        <p className="text-xs text-gray-400">🏊 {formatMs(entry.computed.swimTime)}</p>
                       )}
                     </div>
                   </div>

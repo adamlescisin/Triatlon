@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Timer, Wifi, WifiOff } from 'lucide-react'
+import { Timer, Radio, Wifi, WifiOff } from 'lucide-react'
 
 const CHECKPOINT_LABELS: Record<string, string> = {
   start: 'Start',
@@ -14,7 +14,7 @@ const CHECKPOINT_LABELS: Record<string, string> = {
 }
 
 const CHECKPOINT_ICONS: Record<string, string> = {
-  start: '🏄',
+  start: '🏊',
   depot1: '🔄',
   depot2: '🔄',
   finish: '🏁',

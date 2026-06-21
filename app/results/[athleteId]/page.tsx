@@ -94,7 +94,7 @@ export default async function AthletePublicPage({ params }: { params: Promise<{ 
               <p className="text-sm text-gray-600 mb-3">{e.category.name}</p>
               <div className="grid grid-cols-4 gap-2 text-center">
                 {[
-                  { label: '🏄 Plavání', ms: e.swimMs },
+                  { label: '🏊 Plavání', ms: e.swimMs },
                   { label: '🚴 Kolo', ms: e.bikeMs },
                   { label: '🏃 Běh', ms: e.runMs },
                   { label: '⏱ Celkem', ms: e.totalMs },

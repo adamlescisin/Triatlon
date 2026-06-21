@@ -14,6 +14,7 @@ model User {
   name      String
   role      String
   createdAt DateTime @default(now())
+
   timekeeperTeamMembers TimekeeperTeamMember[]
   timeRecords           TimeRecord[]
   announcerAlerts       AnnouncerAlert[]
@@ -61,6 +62,7 @@ model Season {
   location  String
   status    String   @default("preparing")
   createdAt DateTime @default(now())
+
   categories  Category[]
   checkpoints Checkpoint[]
 }
@@ -74,6 +76,7 @@ model Category {
   startOrder  Int       @default(0)
   startTime   DateTime?
   createdAt   DateTime  @default(now())
+
   season          Season           @relation(fields: [seasonId], references: [id])
   entries         Entry[]
   timekeeperTeams TimekeeperTeam[]
@@ -86,6 +89,7 @@ model Checkpoint {
   order    Int
   optional Boolean @default(false)
   label    String
+
   season      Season       @relation(fields: [seasonId], references: [id])
   timeRecords TimeRecord[]
 }
@@ -98,6 +102,7 @@ model Athlete {
   photoUrl         String?
   emergencyContact String?
   createdAt        DateTime  @default(now())
+
   entries    Entry[]
   relaySlots RelaySlot[]
 }
@@ -111,12 +116,14 @@ model Entry {
   type       String
   status     String   @default("registered")
   createdAt  DateTime @default(now())
+
   category        Category         @relation(fields: [categoryId], references: [id])
   athlete         Athlete?         @relation(fields: [athleteId], references: [id])
   relayTeam       RelayTeam?
   timeRecords     TimeRecord[]
   lapRecords      LapRecord[]
   announcerAlerts AnnouncerAlert[]
+
   @@unique([seasonId, bibNumber])
 }
 
@@ -124,6 +131,7 @@ model RelayTeam {
   id      String @id @default(cuid())
   entryId String @unique
   name    String
+
   entry Entry     @relation(fields: [entryId], references: [id])
   slots RelaySlot[]
 }
@@ -133,6 +141,7 @@ model RelaySlot {
   relayTeamId String
   athleteId   String
   segment     String
+
   relayTeam RelayTeam @relation(fields: [relayTeamId], references: [id])
   athlete   Athlete   @relation(fields: [athleteId], references: [id])
 }
@@ -141,6 +150,7 @@ model TimekeeperTeam {
   id         String @id @default(cuid())
   categoryId String
   name       String
+
   category Category               @relation(fields: [categoryId], references: [id])
   members  TimekeeperTeamMember[]
 }
@@ -149,6 +159,7 @@ model TimekeeperTeamMember {
   id               String @id @default(cuid())
   timekeeperTeamId String
   userId           String
+
   team TimekeeperTeam @relation(fields: [timekeeperTeamId], references: [id])
   user User           @relation(fields: [userId], references: [id])
 }
@@ -164,6 +175,7 @@ model TimeRecord {
   isCorrection Boolean  @default(false)
   corrects     String?
   createdAt    DateTime @default(now())
+
   entry      Entry      @relation(fields: [entryId], references: [id])
   checkpoint Checkpoint @relation(fields: [checkpointId], references: [id])
   timekeeper User       @relation(fields: [timekeeperId], references: [id])
@@ -175,6 +187,7 @@ model LapRecord {
   lapNumber Int
   timestamp DateTime
   createdAt DateTime @default(now())
+
   entry Entry @relation(fields: [entryId], references: [id])
 }
 
@@ -185,6 +198,7 @@ model AnnouncerAlert {
   message        String
   authorId       String
   createdAt      DateTime @default(now())
+
   entry  Entry? @relation(fields: [entryId], references: [id])
   author User   @relation(fields: [authorId], references: [id])
 }
